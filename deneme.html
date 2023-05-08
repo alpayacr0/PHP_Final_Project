@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Girişi</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Kullanıcı Girişi</h1>
+            <form>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Kullanıcı Adı:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Kullanıcı adınızı girin">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Şifre:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Şifrenizi girin">
+                </div>
+                <button type="submit" class="btn btn-primary">Giriş</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
