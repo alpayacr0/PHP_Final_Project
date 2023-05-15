@@ -1,46 +1,36 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+require_once "conn.php";
 
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=user_db", $username, $password);
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if (isset($_POST["mail_address"])&& isset($_POST["password"])) {
   
-  if (isset($_POST["username"])&& isset($_POST["password"])) {
-    
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    $query = "SELECT * FROM users WHERE username = :username AND password = :password";
-    $statement = $conn->prepare($query);
-    $statement->bindValue(':username', $username);
-    $statement->bindValue(':password', $password);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+  $mail_address = $_POST['mail_address'];
+  $password = $_POST['password'];
+  
+  $query = "SELECT * FROM users WHERE email = :mail_address AND password = :password";
+  $statement = $conn->prepare($query);
+  $statement->bindValue(':mail_address', $mail_address);
+  $statement->bindValue(':password', $password);
+  $statement->execute();
+  $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if ($user/* $count>0 */) {
-      session_start();
-      $_SESSION['username'] = $user["username"];
-      $_SESSION['role'] = $user["role"];
-      $_SESSION['id'] = $user["id"];
-      $_SESSION['password'] = $user['password'];
-      header("Location: panel.php");
-      exit;
+  if ($user) {
+    session_start();
+    $_SESSION['id'] = $user["id"];
+    $_SESSION['name_surname'] = $user["name_surname"];
+    $_SESSION['password'] = $user['password'];
+    $_SESSION['mail_address'] = $user["email"];
+    $_SESSION['role'] = $user["role"];
+    header("Location: panel.php");
+    exit;
+  }
+  else{
+    for ($x = 5; $x >= 0; $x--) {
+      echo "Kullanıcı adı veya şifre yanlış. $x saniye sonra giriş sayfasına yönelndirileceksiniz. Lütfen tekrar deneyiniz.";
+      sleep(1);
+      header("Location: index.html");
     }
-    else{
-      for ($x = 5; $x >= 0; $x--) {
-        echo "Kullanıcı adı veya şifre yanlış. $x saniye sonra giriş sayfasına yönelndirileceksiniz. Lütfen tekrar deneyiniz.";
-        sleep(1);
-        header("Location: index.html");
-      }
-      echo"";
-    }
-
+    echo"";
   }
 
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
 }
 ?>

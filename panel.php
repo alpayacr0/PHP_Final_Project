@@ -31,14 +31,13 @@ session_start();
 <body>
   <div class="center-container">
     
-    <h1>Merhaba, <?php echo $_SESSION["username"];?> !</h1>
-    <a href="edit_inf.php"></a>
+    <h1>Hello, <?php echo $_SESSION["name_surname"];?> !</h1>
     <div class="button-group">
-        <a class="btn btn-primary" href='deneme.php' role="button">Bilgileri Düzenle</a>
-        <a class="btn btn-primary" href="#" role="button">Üyeliği Dondur</a>
+        <a class="btn btn-primary" href='edit_inf.php' role="button">Edit Information</a>
+        <a class="btn btn-primary" href="del_inf.php" role="button">Delete the Account</a>
       <?php
       if($_SESSION["role"] === 'admin'){
-        echo "<a class='btn btn-primary'  role='button'>Üyeleri Listele</a>";
+        echo "<a class='btn btn-primary' href='user_list.php' role='button'>List Users</a>";
       }
       ?>
     </div>

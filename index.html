@@ -10,23 +10,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <div>
             <h1>User Login</h1>
             <form action="control.php" method="post">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    <label for="username" class="form-label">Mail Address:</label>
+                    <input type="email" required class="form-control" id="username" name="mail_address" placeholder="Enter your email address">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    <input type="password" required class="form-control" id="password" name="password" placeholder="Enter your password">
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <div class="text-center">
-                <a href="#" class="text-decoration-none">Register</a> | <a href="#" class="text-decoration-none">Forgot your password?</a>
+                <a href="register.html" class="text-decoration-none">Register</a> | <a href="#" class="text-decoration-none">Forgot your password?</a>
             </div>
             
         </div>

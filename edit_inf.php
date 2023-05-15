@@ -1,11 +1,40 @@
 <?php
+require_once "conn.php";
 session_start();
-
-$username = $_SESSION['username'];
-$role = $_SESSION['role'];
 $id = $_SESSION['id'];
+$name_surname = $_SESSION['name_surname'];
+$role = $_SESSION['role'];
+$mail_address = $_SESSION["mail_address"];
+$password = $_SESSION['password'];
 
-$password = str_repeat('*', strlen($_SESSION['password']));
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    $newName = $_POST['name_surname'];
+    $newPassword = $_POST['password'];
+    $newEmail = $_POST['mailaddress'];
+    
+
+    try {
+        $stmt = $conn->prepare("UPDATE users SET name_surname = :name_surname, password = :newPassword, email = :newEmail, role = :newRole WHERE id = :id");
+        $stmt->bindParam(':name_surname', $newName);
+        $stmt->bindParam(':newPassword', $newPassword);
+        $stmt->bindParam(':newEmail', $newEmail);
+        $stmt->bindParam(':newRole', $role);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $_SESSION['name_surname'] = $newName;
+        $_SESSION["mail_address"] = $newEmail;
+        $_SESSION['password'] = $newPassword;
+
+        echo "Veri güncellendi";
+    } catch (PDOException $e) {
+        echo "Veri güncelleme hatası: " . $e->getMessage();
+    }
+
+
+    header("Location: panel.php");
+    }
 
 ?>
 
@@ -20,27 +49,25 @@ $password = str_repeat('*', strlen($_SESSION['password']));
 </head>
 <body>
     <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
-        <h1 class="mb-4">Hesap Bilgileri</h1>
+        <h1 class="mb-4">Account Information</h1>
         <div class="card text-center">
             <div class="card-body">
-                <form>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Kullanıcı Adı:</span>
-                        <input type="text" class="form-control" value="<?php echo $username; ?>">
-                    </div>
-                
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Şifre:</span>
-                        <input type="password" class="form-control" value="<?php echo $password; ?>">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="name_surname" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name_surname" name="name_surname" value="<?php echo $name_surname; ?>">
                     </div>
                     
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Rol:</span>
-                        <input type="text" class="form-control" value="<?php echo $role; ?>"readonly>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control" id="password" name="password" value="<?php echo $password; ?>">
                     </div>
                     
-                    
-                    <button type="button" class="btn btn-primary">Düzenle</button>
+                    <div class="mb-3">
+                        <label for="mailaddress" class="form-label">E-mail Address</label>
+                        <input type="mailaddress" class="form-control" id="mailaddress" name="mailaddress" value="<?php echo $mail_address; ?>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
                 </form>
             </div>
         </div>
