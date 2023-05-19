@@ -36,7 +36,7 @@ session_start();
         <a class="btn btn-primary" href='edit_inf.php' role="button">Edit Information</a>
         <a class="btn btn-primary" href="del_inf.php" role="button">Delete the Account</a>
       <?php
-      if($_SESSION["role"] === 'admin'){
+      if($_SESSION["role"] == 1){
         echo "<a class='btn btn-primary' href='user_list.php' role='button'>List Users</a>";
       }
       ?>

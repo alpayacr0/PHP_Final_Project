@@ -44,6 +44,7 @@
             echo "<td>{$user['role']}</td>";
             echo "<td>{$user['email']}</td>";
             echo "<td><a href='admEdit_inf.php?id={$user['id']}' class='btn btn-primary'>Edit</a></td>";
+            echo "<td><a href='admDel.php?id={$user['id']}' class='btn btn-primary'>Delete</a></td>";
             echo "</tr>";
             }
 

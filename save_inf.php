@@ -30,7 +30,7 @@ $stmt->execute();
         <h1><?php echo 'Registration Successful'; 
         header("Refresh:3;url=index.html");?></h1> <br>
 
-        <h5>After 3 seconds you are redirected to the login page.</h5>
+        <h4>After 3 seconds you are redirected to the login page.</h4>
     </center>
 </body>
 </html>

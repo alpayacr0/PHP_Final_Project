@@ -15,7 +15,10 @@ $stmt->bindParam(':id', $_POST['id']);
 $stmt->execute();
 
 echo "Information update successful";
-header("Refresh:2;url=panel.php");
+
+sleep(2);
+header("Location: panel.php");
+exit();
 
 
 ?>

@@ -24,7 +24,7 @@ if (isset($_POST["mail_address"])&& isset($_POST["password"])) {
     exit;
   }
   else{
-    for ($x = 5; $x >= 0; $x--) {
+    for ($x = 3; $x >= 0; $x--) {
       echo "Kullanıcı adı veya şifre yanlış. $x saniye sonra giriş sayfasına yönelndirileceksiniz. Lütfen tekrar deneyiniz.";
       sleep(1);
       header("Location: index.html");

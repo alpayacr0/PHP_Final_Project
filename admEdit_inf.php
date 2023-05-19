@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Admin User Edir</title>
+    <title>Admin User Edit</title>
     <style>
         body {
             display: flex;
@@ -48,7 +48,10 @@
 
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
-                        <input type="text" class="form-control" id="role" name="role" value="<?php echo $user['role']?>">
+                        <select class="form-label" name="role" id="role">
+                            <option value="0">Normal</option>
+                            <option value="1">Admin</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">

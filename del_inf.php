@@ -11,9 +11,10 @@ $statement-> bindValue(':userid', $userid);
 $statement-> execute();
 
 echo '<div class="alert alert-success" role="alert">
-          Hesabınız başarıyla silindi!
+<center>Your account has been successfully deleted!</center>
         </div>';
-header("Refresh:1 ; Location: index.html");
+        header("Refresh:2;url=index.html");
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +27,5 @@ header("Refresh:1 ; Location: index.html");
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-  
 </body>
 </html>

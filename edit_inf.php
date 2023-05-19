@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="mailaddress" class="form-label">E-mail Address</label>
                         <input type="mailaddress" class="form-control" id="mailaddress" name="mailaddress" value="<?php echo $mail_address; ?>">
                     </div>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>
